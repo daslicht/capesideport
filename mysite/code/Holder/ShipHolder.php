@@ -25,7 +25,7 @@ class ShipHolder_Controller extends Page_Controller {
 			$producer = DropdownField::create('Producer', '', Producer::get()->sort('Name', 'ASC')->map('ID', 'Name') )->setEmptyString('- Producer -'),			
 			$shipType = DropdownField::create('ShipType', '', ShipType::get()->sort('ShipType', 'ASC')->map('ID', 'ShipType') )->setEmptyString('- Ship Type -'),
 			//$country = CountryDropdownField::create('Country')->setEmptyString('- Country -'),
-			$country = DropdownField::create('Country','', Country::get()->sort('Name', 'ASC')->map('ID', 'Name'))->setEmptyString('- Country -'),
+			//$country = DropdownField::create('Country','', Country::get()->sort('Name', 'ASC')->map('ID', 'Name'))->setEmptyString('- Country -'),
 			//$country = DropdownField::create('Country', ShipPage::get()->sort('Country', 'ASC')->map('ID', 'Name') )->setEmptyString('- Country -'),
 			$shippingCompany = DropdownField::create('ShippingCompany', '', ShippingCompany::get()->sort('Name', 'ASC')->map('ID', 'Name') )->setEmptyString('- Shipping Company -'),	
 			
@@ -85,10 +85,10 @@ class ShipHolder_Controller extends Page_Controller {
 		// 	$sqlSaveShipType = Convert::raw2sql($data['ShipType']);
 		// 	$ships = $ships->filter('ShipType', $sqlSaveShipType);
 		// }		
-		if ( isset($data['Country']) && $data['Country'] ) {
-			$sqlSaveCountry = Convert::raw2sql($data['Country']);
-			$ships = $ships->filter(array('CountryID' => $sqlSaveCountry));
-		}		
+		// if ( isset($data['Country']) && $data['Country'] ) {
+		// 	$sqlSaveCountry = Convert::raw2sql($data['Country']);
+		// 	$ships = $ships->filter(array('CountryID' => $sqlSaveCountry));
+		// }		
 		// if ( isset($data['ShippingCompany']) && $data['ShippingCompany'] ) {
 		// 	$sqlSaveShippingCompany = Convert::raw2sql($data['ShippingCompany']);
 		// 	$ships = $ships->filter('Country', $sqlSaveShippingCompany);			

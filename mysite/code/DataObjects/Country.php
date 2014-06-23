@@ -3,16 +3,17 @@
 class Country extends DataObject{ 
 	
 	private static $db = [
-		'Name' => 'Varchar', 
-		'token' => 'Varchar'
+		'Token' => 'Varchar',
+		'Name' => 'Varchar'
+
 	]; 
 
-	private static $has_one = [
-		'Image' => 'Image'
-	];
+	// private static $has_one = [
+	// 	'Image' => 'Image'
+	// ];
 
 	private static $has_many = [
-        'Ship' => 'ShipPage'
-    ];
+	    'Ship' => 'ShipPage'
+	];
 
 }

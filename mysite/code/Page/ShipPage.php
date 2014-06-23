@@ -57,7 +57,8 @@ class ShipPage extends Page {
         // $field = new CountryDropdownField('Country','Country');
         // $field->setEmptyString('- Country -');
         // $fields->addFieldToTab('Root.Main', $field, 'Content');
-        $field = new DropdownField('Country','Country', Country::get()->map('ID', 'Name'));
+
+        $field = new DropdownField('Country','Country', Country::get()->map('ID', 'Name') );
         $field->setEmptyString('- Country -');
         $fields->addFieldToTab('Root.Main', $field, 'Content');
         

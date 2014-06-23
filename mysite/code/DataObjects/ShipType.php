@@ -2,10 +2,10 @@
 
 class ShipType extends DataObject{ 
 	
-	private static $db = [
-		'Token' => 'Varchar',
-		'ShipType' => 'Varchar'
-	]; 
+  	private static $db = [
+  		'Token' => 'Varchar',
+  		'ShipType' => 'Varchar'
+  	]; 
 
     private static $has_many = [
         'Ship' => 'ShipPage'
