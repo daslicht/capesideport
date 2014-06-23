@@ -24,11 +24,14 @@ class ShipHolder_Controller extends Page_Controller {
 			$artnr = TextField::create('ArticleNumber',''),
 			$producer = DropdownField::create('Producer', '', Producer::get()->sort('Name', 'ASC')->map('ID', 'Name') )->setEmptyString('- Producer -'),			
 			$shipType = DropdownField::create('ShipType', '', ShipType::get()->sort('ShipType', 'ASC')->map('ID', 'ShipType') )->setEmptyString('- Ship Type -'),
-			$country = CountryDropdownField::create('Country','')->setEmptyString('- Country -'),
+			//$country = CountryDropdownField::create('Country')->setEmptyString('- Country -'),
+			$country = DropdownField::create('Country','', Country::get()->sort('Name', 'ASC')->map('ID', 'Name'))->setEmptyString('- Country -'),
 			//$country = DropdownField::create('Country', ShipPage::get()->sort('Country', 'ASC')->map('ID', 'Name') )->setEmptyString('- Country -'),
 			$shippingCompany = DropdownField::create('ShippingCompany', '', ShippingCompany::get()->sort('Name', 'ASC')->map('ID', 'Name') )->setEmptyString('- Shipping Company -'),	
 			
 		));
+
+	
 		//var_dump($country);
 		$keyword->setAttribute('placeholder', 'Ship Name');
 		$artnr->setAttribute('placeholder', 'Article Number');
@@ -69,22 +72,23 @@ class ShipHolder_Controller extends Page_Controller {
 		// 	$sqlSaveKeyword = Convert::raw2sql($data['Keyword']);
 		// 	$ships = $ships->filter('Title:StartsWith', $sqlSaveKeyword);
 		// }
-		if ( isset($data['ArticleNumber']) && $data['ArticleNumber'] ) {
-			$sqlSaveArticleNumber = Convert::raw2sql($data['Keyword']);
-			$ships = $ships->filter('ArticleNumber:StartsWith', $sqlSaveArticleNumber);
-		}
+		// if ( isset($data['ArticleNumber']) && $data['ArticleNumber'] ) {
+		// 	$sqlSaveArticleNumber = Convert::raw2sql($data['ArticleNumber']);
+		// 	$ships = $ships->filter('ArticleNumber:StartsWith', $sqlSaveArticleNumber);
+		// }
 		// if ( isset($data['Producer']) && $data['Producer'] ) {
+
 		// 	$sqlSaveProducer = Convert::raw2sql($data['Producer']);
-		// 	$ships = $ships->filter('Producer', $sqlSaveProducer);
+		// 	$ships = $ships->filter(array('ProducerID' => $sqlSaveProducer));
 		// }
 		// if ( isset($data['ShipType']) && $data['ShipType'] ) {
 		// 	$sqlSaveShipType = Convert::raw2sql($data['ShipType']);
 		// 	$ships = $ships->filter('ShipType', $sqlSaveShipType);
 		// }		
-		// if ( isset($data['Country']) && $data['Country'] ) {
-		// 	$sqlSaveCountry = Convert::raw2sql($data['Country']);
-		// 	$ships = $ships->filter('Country', $sqlSaveCountry);
-		// }		
+		if ( isset($data['Country']) && $data['Country'] ) {
+			$sqlSaveCountry = Convert::raw2sql($data['Country']);
+			$ships = $ships->filter(array('CountryID' => $sqlSaveCountry));
+		}		
 		// if ( isset($data['ShippingCompany']) && $data['ShippingCompany'] ) {
 		// 	$sqlSaveShippingCompany = Convert::raw2sql($data['ShippingCompany']);
 		// 	$ships = $ships->filter('Country', $sqlSaveShippingCompany);			

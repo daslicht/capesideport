@@ -2,8 +2,7 @@
 class ShipPage extends Page {
     
     private static $db = [
-         'ArticleNumber' => 'Varchar',
-         'Country' => 'Varchar'
+         'ArticleNumber' => 'Varchar'
     ];
 
     private static $has_many = [
@@ -13,6 +12,7 @@ class ShipPage extends Page {
     private static $has_one = [
         'Producer' => 'Producer',
         'ShipType' => 'ShipType',
+        'Country' => 'Country',
         'ShippingCompany' => 'ShippingCompany'
     ];
 
@@ -54,7 +54,10 @@ class ShipPage extends Page {
         $field->setEmptyString('- Shipping Company -');
         $fields->addFieldToTab('Root.Main', $field, 'Content');     
         
-        $field = new CountryDropdownField('Country','Country');
+        // $field = new CountryDropdownField('Country','Country');
+        // $field->setEmptyString('- Country -');
+        // $fields->addFieldToTab('Root.Main', $field, 'Content');
+        $field = new DropdownField('Country','Country', Country::get()->map('ID', 'Name'));
         $field->setEmptyString('- Country -');
         $fields->addFieldToTab('Root.Main', $field, 'Content');
         
